@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velocity Motors - Los Autos Más Rápidos del Mundo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #f0f0f0;
+            --accent-color: #cc0000;
+            --text-light: #ffffff;
+            --text-dark: #1a1a1a;
+            --koenigsegg-color: #d4af37;
+            --mclaren-color: #ff8000;
+            --ferrari-color: #ff2800;
+            --bugatti-color: #2c5aa0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://wallpapers.com/images/hd/dim-monstera-leaves-plant-4k-background-oalin213sy9vps35.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 30px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .brand-tabs {
+            padding: 20px 0;
+            background-color: #0a0a0a;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-tabs {
+            border: none;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            border-radius: 0;
+            color: var(--text-light);
+            font-weight: 500;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            background-color: transparent;
+        }
+
+        .nav-tabs .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-tabs .nav-link.active, 
+        .nav-tabs .nav-link:hover {
+            background-color: transparent;
+            color: var(--text-light);
+        }
+
+        .nav-tabs .nav-link.active::after,
+        .nav-tabs .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-tabs .nav-item:nth-child(1) .nav-link::after {
+            background-color: var(--koenigsegg-color);
+        }
+
+        .nav-tabs .nav-item:nth-child(2) .nav-link::after {
+            background-color: var(--mclaren-color);
+        }
+
+        .nav-tabs .nav-item:nth-child(3) .nav-link::after {
+            background-color: var(--ferrari-color);
+        }
+
+        .nav-tabs .nav-item:nth-child(4) .nav-link::after {
+            background-color: var(--bugatti-color);
+        }
+
+        .tab-content {
+            padding: 60px 0;
+        }
+
+        .tab-pane {
+            transition: all 0.5s ease;
+        }
+
+        .brand-intro {
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+
+        .brand-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .brand-intro p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .koenigsegg-color {
+            color: var(--koenigsegg-color);
+        }
+
+        .mclaren-color {
+            color: var(--mclaren-color);
+        }
+
+        .ferrari-color {
+            color: var(--ferrari-color);
+        }
+
+        .bugatti-color {
+            color: var(--bugatti-color);
+        }
+
+        .car-card {
+            background: rgba(15, 15, 15, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .car-image {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .car-card:hover .car-image img {
+            transform: scale(1.1);
+        }
+
+        .car-rank {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--text-light);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+
+        .car-details {
+            padding: 25px;
+        }
+
+        .car-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .car-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .car-spec {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .car-spec i {
+            font-size: 1rem;
+        }
+
+        .car-description {
+            font-size: 0.95rem;
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .more-info-btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--text-light);
+            padding: 8px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .more-info-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .loader-icon {
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 5px solid var(--accent-color);
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .loader-text {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer {
+            background-color: #0a0a0a;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: #999;
+            font-size: 0.9rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-tabs .nav-link {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .brand-intro h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .nav-tabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+            
+            .nav-tabs .nav-link {
+                white-space: nowrap;
+            }
+            
+            .car-image {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .brand-intro h2 {
+                font-size: 1.5rem;
+            }
+            
+            .car-details h3 {
+                font-size: 1.3rem;
+            }
+            
+            .car-specs {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="loader" class="loader">
+        <div class="loader-icon"></div>
+        <div class="loader-text">Cargando información...</div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Velocity  <span class="text-danger">Motors</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Marcas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Los Súper Deportivos Más Rápidos del Mundo</h1>
+            <p>Descubre la velocidad, la potencia y la ingeniería detrás de los autos más exclusivos y veloces jamás construidos. Presentamos los 10 modelos más rápidos de Koenigsegg, McLaren, Ferrari y Bugatti.</p>
+        </div>
+    </section>
+
+    <div class="brand-tabs">
+        <ul class="nav nav-tabs" id="brandTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="koenigsegg-tab" data-bs-toggle="tab" data-bs-target="#koenigsegg" type="button" role="tab" aria-controls="koenigsegg" aria-selected="true">Koenigsegg</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="mclaren-tab" data-bs-toggle="tab" data-bs-target="#mclaren" type="button" role="tab" aria-controls="mclaren" aria-selected="false">McLaren</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="ferrari-tab" data-bs-toggle="tab" data-bs-target="#ferrari" type="button" role="tab" aria-controls="ferrari" aria-selected="false">Ferrari</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="bugatti-tab" data-bs-toggle="tab" data-bs-target="#bugatti" type="button" role="tab" aria-controls="bugatti" aria-selected="false">Bugatti</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content" id="brandTabsContent">
+        <!-- Koenigsegg Tab -->
+        <div class="tab-pane fade show active" id="koenigsegg" role="tabpanel" aria-labelledby="koenigsegg-tab">
+            <div class="brand-intro">
+                <h2>Los 10 <span class="koenigsegg-color">Koenigsegg</span> Más Rápidos</h2>
+                <p>Koenigsegg Automotive AB es un fabricante sueco de automóviles de alto rendimiento, fundado en 1994 por Christian von Koenigsegg. Conocidos por romper récords de velocidad y por su innovadora ingeniería, Koenigsegg ha establecido nuevos estándares en la industria de los superdeportivos.</p>
+            </div>
+            
+            <div class="container">
+                <div class="row" id="koenigseggCars">
+                    <!-- Cars will be loaded here -->
+                    <div class="col-12 text-center py-5">
+                        <div class="spinner-border text-light" role="status">
+                            <span class="visually-hidden">Cargando...</span>
+                        </div>
+                        <p class="mt-3">Cargando los autos más rápidos de Koenigsegg...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- McLaren Tab -->
+        <div class="tab-pane fade" id="mclaren" role="tabpanel" aria-labelledby="mclaren-tab">
+            <div class="brand-intro">
+                <h2>Los 10 <span class="mclaren-color">McLaren</span> Más Rápidos</h2>
+                <p>McLaren Automotive es un fabricante británico de automóviles deportivos de alto rendimiento fundado por Bruce McLaren en 1963. Con raíces en la Fórmula 1, McLaren ha trasladado su experiencia en carreras a la producción de superdeportivos con tecnología de vanguardia y un diseño aerodinámico impecable.</p>
+            </div>
+            
+            <div class="container">
+                <div class="row" id="mclarenCars">
+                    <!-- Cars will be loaded here -->
+                    <div class="col-12 text-center py-5">
+                        <div class="spinner-border text-light" role="status">
+                            <span class="visually-hidden">Cargando...</span>
+                        </div>
+                        <p class="mt-3">Cargando los autos más rápidos de McLaren...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ferrari Tab -->
+        <div class="tab-pane fade" id="ferrari" role="tabpanel" aria-labelledby="ferrari-tab">
+            <div class="brand-intro">
+                <h2>Los 10 <span class="ferrari-color">Ferrari</span> Más Rápidos</h2>
+                <p>Ferrari S.p.A. es un fabricante italiano de automóviles deportivos de lujo con sede en Maranello, Italia, fundado por Enzo Ferrari en 1939. Reconocido por su emblemático color rojo "Rosso Corsa" y el distintivo caballo encabritado, Ferrari representa la máxima expresión de diseño italiano y rendimiento automovilístico.</p>
+            </div>
+            
+            <div class="container">
+                <div class="row" id="ferrariCars">
+                    <!-- Cars will be loaded here -->
+                    <div class="col-12 text-center py-5">
+                        <div class="spinner-border text-light" role="status">
+                            <span class="visually-hidden">Cargando...</span>
+                        </div>
+                        <p class="mt-3">Cargando los autos más rápidos de Ferrari...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bugatti Tab -->
+        <div class="tab-pane fade" id="bugatti" role="tabpanel" aria-labelledby="bugatti-tab">
+            <div class="brand-intro">
+                <h2>Los 10 <span class="bugatti-color">Bugatti</span> Más Rápidos</h2>
+                <p>Bugatti Automobiles S.A.S. es un fabricante francés de automóviles de ultra lujo y alto rendimiento, fundado en 1909 por Ettore Bugatti. Actualmente parte del Grupo Volkswagen, Bugatti ha redefinido los límites de velocidad y lujo con sus hipercars exclusivos que combinan ingeniería de precisión con artesanía excepcional.</p>
+            </div>
+            
+            <div class="container">
+                <div class="row" id="bugattiCars">
+                    <!-- Cars will be loaded here -->
+                    <div class="col-12 text-center py-5">
+                        <div class="spinner-border text-light" role="status">
+                            <span class="visually-hidden">Cargando...</span>
+                        </div>
+                        <p class="mt-3">Cargando los autos más rápidos de Bugatti...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Velocity  <span class="text-danger">Motors</span></div>
+            <p class="footer-text">© 2026 Velocity Motors . Todos los derechos reservados. Esta página es una demostración para mostrar los autos más rápidos de las marcas más prestigiosas del mundo.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Mock data for the cars
+        const carData = {
+            koenigsegg: [
+                {
+                    id: 1,
+                    name: "Koenigsegg Jesko Absolut",
+                    year: 2022,
+                    topSpeed: "531+ km/h (estimado)",
+                    horsepower: "1,600 HP",
+                    acceleration: "0-100 km/h en 2.5s",
+                    image: "https://www.wsupercars.com/wallpapers-regular/Koenigsegg/2021-Koenigsegg-Jesko-Absolut-011-2000.jpg",
+                    description: "El Koenigsegg Jesko Absolut es la versión orientada a la velocidad máxima del Jesko. Diseñado para ser el automóvil de producción más rápido del mundo, con una velocidad máxima teórica superior a 500 km/h gracias a su impresionante aerodinámica y su potente motor V8 twin-turbo de 5.0 litros."
+                },
+                {
+                    id: 2,
+                    name: "Koenigsegg Jesko Attack",
+                    year: 2022,
+                    topSpeed: "482 km/h",
+                    horsepower: "1,600 HP",
+                    acceleration: "0-100 km/h en 2.5s",
+                    image: "https://www.topgear-magazine.fr/wp-content/uploads/2021/07/koenigsegg_jesko_attack_2.jpeg",
+                    description: "El Jesko Attack es la variante centrada en la pista del Jesko, con mayor carga aerodinámica. Utiliza el mismo motor V8 twin-turbo de 5.0 litros que produce 1,280 HP con gasolina regular y 1,600 HP con E85, junto con una transmisión de 9 velocidades y múltiples embragues llamada Light Speed Transmission (LST)."
+                },
+                {
+                    id: 3,
+                    name: "Koenigsegg Gemera",
+                    year: 2022,
+                    topSpeed: "400 km/h",
+                    horsepower: "1,700 HP",
+                    acceleration: "0-100 km/h en 1.9s",
+                    image: "https://phantom-marca.uecdn.es/861aa4730629b0cb8c2cbca13cd1d2b3/resize/1200/f/webp/assets/multimedia/imagenes/2023/07/11/16890559252623.jpg",
+                    description: "El Koenigsegg Gemera es un 'mega-GT' híbrido de cuatro plazas que combina un motor de tres cilindros de 2.0 litros con tres motores eléctricos, produciendo una potencia combinada de 1,700 HP. A pesar de ser el primer modelo de cuatro plazas de Koenigsegg, mantiene un rendimiento excepcional."
+                },
+                {
+                    id: 4,
+                    name: "Koenigsegg Regera",
+                    year: 2016,
+                    topSpeed: "410 km/h",
+                    horsepower: "1,500 HP",
+                    acceleration: "0-100 km/h en 2.8s",
+                    image: "https://i1.prth.gr/images/1168x656/jpg/files/2023-10-11/231005160048_Koenigsegg-Regera_I.jpg",
+                    description: "El Koenigsegg Regera es un híbrido enchufable que combina un motor V8 twin-turbo de 5.0 litros con tres motores eléctricos. Una de sus características más notables es el sistema de transmisión Koenigsegg Direct Drive (KDD), que elimina la necesidad de una caja de cambios tradicional."
+                },
+                {
+                    id: 5,
+                    name: "Koenigsegg One:1",
+                    year: 2014,
+                    topSpeed: "439 km/h (teórica)",
+                    horsepower: "1,360 HP",
+                    acceleration: "0-100 km/h en 2.8s",
+                    image: "https://www.wsupercars.com/wallpapers-regular/Koenigsegg/2014-Koenigsegg-Agera-One-1-006-1600.jpg",
+                    description: "El One:1 recibió su nombre debido a su relación potencia-peso de 1:1 (un megavatio de potencia para un megagramo de masa). Fue el primer automóvil de producción en el mundo en lograr esta relación. Solo se fabricaron seis unidades, más un prototipo."
+                },
+                {
+                    id: 6,
+                    name: "Koenigsegg Agera RS",
+                    year: 2015,
+                    topSpeed: "447 km/h",
+                    horsepower: "1,160 HP",
+                    acceleration: "0-100 km/h en 2.8s",
+                    image: "https://cdn.motor1.com/images/mgl/x4jP6/s1/koenigsegg-agera-rs-refinement-front.webp",
+                    description: "El Agera RS ostentó el récord del automóvil de producción más rápido del mundo entre 2017 y 2020, con una velocidad máxima de 447 km/h. Equipado con un motor V8 biturbo de 5.0 litros, se fabricaron solo 25 unidades, lo que lo convierte en uno de los superdeportivos más exclusivos."
+                },
+                {
+                    id: 7,
+                    name: "Koenigsegg Agera R",
+                    year: 2011,
+                    topSpeed: "418 km/h",
+                    horsepower: "1,140 HP",
+                    acceleration: "0-100 km/h en 2.8s",
+                    image: "https://exclusivecarregistry.com/render-images?imgid=2631",
+                    description: "El Agera R es una versión mejorada del Agera original, con mayor potencia y mayor velocidad máxima. Utiliza biocombustible E85 para alcanzar su máxima potencia y cuenta con características especiales como llantas de fibra de carbono y un sistema de almacenamiento de equipaje único."
+                },
+                {
+                    id: 8,
+                    name: "Koenigsegg Agera",
+                    year: 2010,
+                    topSpeed: "400 km/h",
+                    horsepower: "960 HP",
+                    acceleration: "0-100 km/h en 3.0s",
+                    image: "https://autoshowtv.com.mx/wp-content/uploads/2024/06/Agera-S.jpg",
+                    description: "El Koenigsegg Agera original debutó en el Salón del Automóvil de Ginebra 2010 como sucesor del CCX. Su nombre 'Agera' significa 'actuar' en sueco y estableció nuevos estándares para los superdeportivos con su combinación de potencia, ligereza y tecnología avanzada."
+                },
+                {
+                    id: 9,
+                    name: "Koenigsegg CCXR Trevita",
+                    year: 2010,
+                    topSpeed: "395 km/h",
+                    horsepower: "1,018 HP",
+                    acceleration: "0-100 km/h en 2.9s",
+                    image: "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2023/07/05/16885701766887.jpg",
+                    description: "El CCXR Trevita es una edición especial del CCXR, famoso por su carrocería de fibra de carbono con acabado blanco brillante gracias a una técnica patentada por Koenigsegg. Solo se fabricaron tres unidades, convirtiéndolo en uno de los autos más raros y caros del mundo."
+                },
+                {
+                    id: 10,
+                    name: "Koenigsegg CCX",
+                    year: 2006,
+                    topSpeed: "395 km/h",
+                    horsepower: "806 HP",
+                    acceleration: "0-100 km/h en 3.2s",
+                    image: "https://koenigsegg-cdn-g7eehhd6f0ewcaff.z02.azurefd.net/drupal/styles/1400x1000/azure/2022-03/1U5A3534%20copie.jpg?h=ab3b0483&itok=o5ddVfRV",
+                    description: "El CCX (Competition Coupé X) fue diseñado para celebrar el 10º aniversario de Koenigsegg. Fue el primer modelo de la marca desarrollado específicamente para cumplir con las regulaciones globales, especialmente las de EE.UU., y estableció varios récords de velocidad en su época."
+                }
+            ],
+            mclaren: [
+                {
+                    id: 1,
+                    name: "McLaren Speedtail",
+                    year: 2020,
+                    topSpeed: "403 km/h",
+                    horsepower: "1,070 HP",
+                    acceleration: "0-100 km/h en 2.9s",
+                    image: "https://www.autonocion.com/wp-content/uploads/2019/12/McLaren-Speedtail-2020-1.jpg",
+                    description: "El McLaren Speedtail es considerado el sucesor espiritual del legendario F1, con una disposición de asientos tres en el centro similar. Con una producción limitada a 106 unidades, este hypercoche híbrido presenta una aerodinámica revolucionaria y es el McLaren de producción más rápido hasta la fecha."
+                },
+                {
+                    id: 2,
+                    name: "McLaren 765LT",
+                    year: 2021,
+                    topSpeed: "330 km/h",
+                    horsepower: "765 HP",
+                    acceleration: "0-100 km/h en 2.7s",
+                    image: "https://mclaren.scene7.com/is/image/mclaren/765lt-3-1200x1200-1:crop-4x3?wid=1920&hei=1440",
+                    description: "El 765LT (Long Tail) es la versión más potente y ligera de la Serie 720S. Con 80 kg menos de peso y 45 HP adicionales, el 765LT ofrece un rendimiento extremo en circuito mientras mantiene la homologación para carretera. Solo se fabricaron 765 unidades, todas vendidas rápidamente."
+                },
+                {
+                    id: 3,
+                    name: "McLaren Senna",
+                    year: 2018,
+                    topSpeed: "335 km/h",
+                    horsepower: "800 HP",
+                    acceleration: "0-100 km/h en 2.8s",
+                    image: "https://mclaren.scene7.com/is/image/mclaren/Senna-tile-1-1200x1200:crop-4x3?wid=1920&hei=1440",
+                    description: "Nombrado en honor al legendario piloto de Fórmula 1 Ayrton Senna, este superdeportivo fue diseñado con un enfoque absoluto en el rendimiento en pista. Con una aerodinámica radical que genera 800 kg de carga aerodinámica, el Senna sacrifica la estética por la funcionalidad y el rendimiento puro."
+                },
+                {
+                    id: 4,
+                    name: "McLaren 720S",
+                    year: 2017,
+                    topSpeed: "341 km/h",
+                    horsepower: "720 HP",
+                    acceleration: "0-100 km/h en 2.9s",
+                    image: "https://www.wsupercars.com/wallpapers-regular/McLaren/2018-McLaren-720S-004-2000.jpg",
+                    description: "El McLaren 720S, sucesor del 650S, representa la segunda generación de la Serie Super de McLaren. Con un chasis Monocage II de fibra de carbono completamente nuevo y un motor V8 biturbo de 4.0 litros, el 720S ofrece un rendimiento comparable al de hipercars mucho más caros."
+                },
+                {
+                    id: 5,
+                    name: "McLaren P1",
+                    year: 2013,
+                    topSpeed: "350 km/h (limitada)",
+                    horsepower: "916 HP",
+                    acceleration: "0-100 km/h en 2.8s",
+                    image: "https://hips.hearstapps.com/hmg-prod/images/captura-de-pantalla-2024-01-10-a-las-15-02-15-659eb0609d2a5.png",
+                    description: "El P1 fue uno de los miembros de la 'Trinidad Santa' de hipercars híbridos (junto con el Ferrari LaFerrari y el Porsche 918 Spyder). Con tecnología derivada de la Fórmula 1, el P1 combinaba un motor V8 biturbo con un motor eléctrico para un rendimiento extraordinario. Solo se fabricaron 375 unidades."
+                },
+                {
+                    id: 6,
+                    name: "McLaren 675LT",
+                    year: 2015,
+                    topSpeed: "330 km/h",
+                    horsepower: "675 HP",
+                    acceleration: "0-100 km/h en 2.9s",
+                    image: "https://mclaren.scene7.com/is/image/mclaren/675LT-hero-1920x1080-1:crop-16x9?wid=1920&hei=1080",
+                    description: "El 675LT revivió el nombre histórico 'Longtail' de McLaren, inspirado en el F1 GTR Longtail de los años 90. Con un enfoque en la reducción de peso y la aerodinámica mejorada, el 675LT ofrece un rendimiento excepcional en pista sin sacrificar la usabilidad en carretera."
+                },
+                {
+                    id: 7,
+                    name: "McLaren 650S",
+                    year: 2014,
+                    topSpeed: "333 km/h",
+                    horsepower: "650 HP",
+                    acceleration: "0-100 km/h en 3.0s",
+                    image: "https://cdn.autoproyecto.com/wp-content/uploads/2015/06/64457.jpg.webp",
+                    description: "El 650S, evolución del MP4-12C, presentaba un diseño frontal inspirado en el P1 y mejoras significativas en potencia, aerodinámica y suspensión. Disponible en versiones Coupé y Spider (descapotable), el 650S representó un avance importante en la línea de superdeportivos de McLaren."
+                },
+                {
+                    id: 8,
+                    name: "McLaren 600LT",
+                    year: 2018,
+                    topSpeed: "328 km/h",
+                    horsepower: "600 HP",
+                    acceleration: "0-100 km/h en 2.9s",
+                    image: "https://mclaren.scene7.com/is/image/mclaren/600LT-Tile-1200x1200:crop-4x3?wid=1920&hei=1440",
+                    description: "El 600LT es la versión 'Long Tail' del 570S, con un chasis extendido, reducción de peso y escape orientado hacia arriba. Diseñado para ofrecer una experiencia de conducción más radical y centrada en la pista, el 600LT mantiene el espíritu de los modelos LT anteriores con un enfoque en la ligereza y el rendimiento."
+                },
+                {
+                    id: 9,
+                    name: "McLaren F1",
+                    year: 1992,
+                    topSpeed: "391 km/h",
+                    horsepower: "627 HP",
+                    acceleration: "0-100 km/h en 3.2s",
+                    image: "https://mclaren.scene7.com/is/image/mclaren/MSO-Heritage-1920x1080:crop-16x9?wid=1920&hei=1080",
+                    description: "El legendario McLaren F1, diseñado por Gordon Murray, mantuvo el récord del automóvil de producción más rápido del mundo durante más de una década. Con su característica disposición de asientos tres en el centro y su construcción revolucionaria en fibra de carbono, el F1 sigue siendo considerado uno de los mejores superdeportivos jamás creados."
+                },
+                {
+                    id: 10,
+                    name: "McLaren 570S",
+                    year: 2015,
+                    topSpeed: "328 km/h",
+                    horsepower: "570 HP",
+                    acceleration: "0-100 km/h en 3.2s",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/2017_McLaren_570S%2C_blue%2C_front_left.jpg/1200px-2017_McLaren_570S%2C_blue%2C_front_left.jpg",
+                    description: "El 570S fue el primer modelo de la Serie Sport de McLaren, diseñado para ser más accesible y utilizable diariamente que los superdeportivos más extremos de la marca. Con un chasis MonoCell II de fibra de carbono y tecnología derivada de la Fórmula 1, ofrece un rendimiento extraordinario en un paquete más compacto."
+                }
+            ],
+            ferrari: [
+                {
+                    id: 1,
+                    name: "Ferrari SF90 Stradale",
+                    year: 2019,
+                    topSpeed: "340 km/h",
+                    horsepower: "1,000 HP",
+                    acceleration: "0-100 km/h en 2.5s",
+                    image: "https://f1rstmotors.com/_next/image?url=https%3A%2F%2Ff1rst-motors.s3.me-central-1.amazonaws.com%2Fblog%2F1714734880903-blob&w=3840&q=100",
+                    description: "El SF90 Stradale es el primer Ferrari híbrido enchufable de producción en serie. Combina un motor V8 biturbo de 4.0 litros con tres motores eléctricos para producir 1,000 HP, convirtiéndolo en el Ferrari de carretera más potente hasta la fecha. Su nombre conmemora el 90 aniversario de la Scuderia Ferrari."
+                },
+                {
+                    id: 2,
+                    name: "Ferrari LaFerrari",
+                    year: 2013,
+                    topSpeed: "350 km/h",
+                    horsepower: "963 HP",
+                    acceleration: "0-100 km/h en 2.4s",
+                    image: "https://cdn.ferrari.com/cms/network/media/img/resize/5ddb97392cdb32285a799dfa-laferrari-2013-share?width=1080",
+                    description: "El LaFerrari (literalmente 'El Ferrari') representa la cumbre de la tecnología de la marca. Este hypercar híbrido combina un motor V12 atmosférico de 6.3 litros con un sistema HY-KERS derivado de la Fórmula 1. Solo se produjeron 499 unidades del coupé, más 210 unidades de la versión descapotable Aperta."
+                },
+                {
+                    id: 3,
+                    name: "Ferrari 812 Superfast",
+                    year: 2017,
+                    topSpeed: "340 km/h",
+                    horsepower: "800 HP",
+                    acceleration: "0-100 km/h en 2.9s",
+                    image: "https://cdn.ferrari.com/cms/dws/media/img/resize/610be5c87b804300313d98bb?width=1080",
+                    description: "El 812 Superfast continúa la tradición de los gran turismos V12 de Ferrari. Con el motor V12 atmosférico más potente jamás instalado en un Ferrari de producción, el 812 combina un rendimiento extraordinario con la practicidad de un GT. Incorpora dirección en las cuatro ruedas para mejorar la agilidad."
+                },
+                {
+                    id: 4,
+                    name: "Ferrari F8 Tributo",
+                    year: 2019,
+                    topSpeed: "340 km/h",
+                    horsepower: "720 HP",
+                    acceleration: "0-100 km/h en 2.9s",
+                    image: "https://www.topgear.com/sites/default/files/cars-car/image/2019/09/tg_-_ferrari_f8_tributo_-091.jpg",
+                    description: "El F8 Tributo, sucesor del 488 GTB, rinde homenaje al motor V8 biturbo de Ferrari, ganador de múltiples premios. Con una aerodinámica mejorada inspirada en los autos de competición y una reducción de peso significativa, el F8 ofrece un rendimiento superior manteniendo la usabilidad diaria."
+                },
+                {
+                    id: 5,
+                    name: "Ferrari Enzo",
+                    year: 2002,
+                    topSpeed: "350 km/h",
+                    horsepower: "660 HP",
+                    acceleration: "0-100 km/h en 3.1s",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Orange_Enzo_Ferrari_%287191948164%29.jpg",
+                    description: "Nombrado en honor al fundador de la compañía, Enzo Ferrari, este superdeportivo incorporó tecnología derivada directamente de la Fórmula 1, incluyendo un chasis y carrocería de fibra de carbono y frenos de cerámica de carbono. Solo se fabricaron 400 unidades, lo que lo convierte en uno de los Ferrari más exclusivos."
+                },
+                {
+                    id: 6,
+                    name: "Ferrari 488 Pista",
+                    year: 2018,
+                    topSpeed: "340 km/h",
+                    horsepower: "720 HP",
+                    acceleration: "0-100 km/h en 2.8s",
+                    image: "https://hips.hearstapps.com/es.h-cdn.co/cades/contenidos/53695/ferrari-488-pista-piloti-ferrari-1.jpg",
+                    description: "El 488 Pista ('pista' significa 'circuito' en italiano) es la versión orientada a la pista del 488 GTB. Con un 25% más de downforce, una significativa reducción de peso y el V8 más potente en la historia de Ferrari en ese momento, el Pista representa la transferencia de tecnología de las carreras a los autos de carretera."
+                },
+                {
+                    id: 7,
+                    name: "Ferrari F12tdf",
+                    year: 2015,
+                    topSpeed: "340 km/h",
+                    horsepower: "780 HP",
+                    acceleration: "0-100 km/h en 2.9s",
+                    image: "https://cdn.ferrari.com/cms/network/media/img/resize/5da7262d5d8cd56fbf2b3526-ferrari-f12tdf_intro-share?width=1080",
+                    description: "El F12tdf rinde homenaje a la legendaria carrera Tour de France Automobile que Ferrari dominó en los años 50 y 60. Esta edición limitada del F12berlinetta incorpora mejoras aerodinámicas radicales, reducción de peso y un motor V12 atmosférico más potente. Solo se fabricaron 799 unidades."
+                },
+                {
+                    id: 8,
+                    name: "Ferrari 599 GTO",
+                    year: 2010,
+                    topSpeed: "335 km/h",
+                    horsepower: "670 HP",
+                    acceleration: "0-100 km/h en 3.3s",
+                    image: "https://cdn.motor1.com/images/mgl/v1zwG/s1/2011-ferrari-599-gto-for-sale-at-mecum-auctions-indy-2020.jpg",
+                    description: "El 599 GTO fue el tercer Ferrari en llevar el prestigioso nombre 'Gran Turismo Omologato', después del 250 GTO y el 288 GTO. Basado en el 599XX de competición, el GTO fue el Ferrari de carretera más rápido en el circuito de pruebas de Fiorano hasta la llegada del LaFerrari. Solo se produjeron 599 unidades."
+                },
+                {
+                    id: 9,
+                    name: "Ferrari F430 Scuderia",
+                    year: 2007,
+                    topSpeed: "320 km/h",
+                    horsepower: "510 HP",
+                    acceleration: "0-100 km/h en 3.6s",
+                    image: "https://simonfurlonger.co.uk/wp-content/uploads/2022/07/DP6_6461-1.jpg",
+                    description: "El F430 Scuderia es la versión ligera y orientada a la pista del F430. Presentado por Michael Schumacher, incorpora tecnología de la Fórmula 1 como el E-Diff (diferencial electrónico) y el 'manettino' para seleccionar modos de conducción. Con 100 kg menos que el F430 estándar, ofrece un rendimiento superior en circuito."
+                },
+                {
+                    id: 10,
+                    name: "Ferrari FXX-K Evo",
+                    year: 2017,
+                    topSpeed: "350 km/h (estimado)",
+                    horsepower: "1,050 HP",
+                    acceleration: "0-100 km/h en 2.5s (estimado)",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Ferrari_FXX_K_Evo_%2842017945644%29.jpg/1200px-Ferrari_FXX_K_Evo_%2842017945644%29.jpg",
+                    description: "El FXX-K Evo es la evolución del FXX-K, que a su vez está basado en el LaFerrari. Este vehículo no es legal para circular por carretera y forma parte del programa exclusivo de desarrollo de Ferrari. Con una aerodinámica radicalmente mejorada que genera más de 830 kg de downforce, representa lo último en tecnología de la marca."
+                }
+            ],
+            bugatti: [
+                {
+                    id: 1,
+                    name: "Bugatti Chiron Super Sport 300+",
+                    year: 2019,
+                    topSpeed: "490.5 km/h",
+                    horsepower: "1,600 HP",
+                    acceleration: "0-100 km/h en 2.4s",
+                    image: "https://www.autonocion.com/wp-content/uploads/2022/07/Bugatti-Chiron-Super-Sport-300-1.jpg",
+                    description: "El Chiron Super Sport 300+ es una edición especial creada para conmemorar el récord de velocidad de 490.5 km/h alcanzado en 2019. Esta versión presenta una carrocería alargada para mejorar la aerodinámica, un motor W16 con 100 HP adicionales y modificaciones específicas para alcanzar velocidades extremas. Solo se fabricarán 30 unidades."
+                },
+                {
+                    id: 2,
+                    name: "Bugatti Bolide",
+                    year: 2020,
+                    topSpeed: "500+ km/h (teórica)",
+                    horsepower: "1,850 HP",
+                    acceleration: "0-100 km/h en 2.17s",
+                    image: "https://www.wsupercars.com/wallpapers-regular/Bugatti/2020-Bugatti-Bolide-Concept-014-2160.jpg",
+                    description: "El Bolide es un concept car extremo diseñado con un enfoque en máximo rendimiento y mínimo peso. Utilizando el motor W16 quad-turbo de 8.0 litros del Chiron pero en un chasis ultraligero de solo 1,240 kg, el Bolide representa la expresión más pura de la filosofía de Bugatti. Posteriormente, Bugatti anunció una versión de producción limitada."
+                },
+                {
+                    id: 3,
+                    name: "Bugatti Centodieci",
+                    year: 2021,
+                    topSpeed: "380 km/h (limitada)",
+                    horsepower: "1,600 HP",
+                    acceleration: "0-100 km/h en 2.4s",
+                    image: "https://cdn.motor1.com/images/mgl/9m422m/s1/bugatti-centodieci-in-vendita-all-asta-di-rm-sotheby-s.jpg",
+                    description: "El Centodieci ('110' en italiano) es un homenaje al legendario Bugatti EB110 de los años 90. Con un diseño que evoca claramente a su predecesor pero con tecnología moderna, el Centodieci es más ligero y potente que el Chiron estándar. Solo se fabricarán 10 unidades, todas vendidas por un precio de aproximadamente 9 millones de euros cada una."
+                },
+                {
+                    id: 4,
+                    name: "Bugatti Chiron Pur Sport",
+                    year: 2020,
+                    topSpeed: "350 km/h (limitada)",
+                    horsepower: "1,500 HP",
+                    acceleration: "0-100 km/h en 2.3s",
+                    image: "https://hips.hearstapps.com/hmg-prod/images/bugatti-chiron-pur-sport-2021-1600-01-1583254658.jpg",
+                    description: "El Chiron Pur Sport es la versión del Chiron orientada a la agilidad y el manejo en curvas. Con una aerodinámica más agresiva que incluye un enorme alerón trasero fijo, suspensión más rígida, relaciones de cambio más cortas y neumáticos especiales, está diseñado para ofrecer una experiencia de conducción más intensa. Se fabricarán solo 60 unidades."
+                },
+                {
+                    id: 5,
+                    name: "Bugatti Divo",
+                    year: 2018,
+                    topSpeed: "380 km/h (limitada)",
+                    horsepower: "1,500 HP",
+                    acceleration: "0-100 km/h en 2.4s",
+                    image: "https://www.wsupercars.com/wallpapers-regular/Bugatti/2019-Bugatti-Divo-005-2160.jpg",
+                    description: "El Divo, nombrado en honor al piloto Albert Divo, es una versión del Chiron orientada a circuito. Con una aerodinámica completamente rediseñada que genera 90 kg más de downforce, el Divo es 8 segundos más rápido que el Chiron en el circuito de Nardò, aunque con una velocidad máxima limitada. Se fabricaron solo 40 unidades, todas vendidas antes de su presentación pública."
+                },
+                {
+                    id: 6,
+                    name: "Bugatti Chiron",
+                    year: 2016,
+                    topSpeed: "420 km/h (limitada)",
+                    horsepower: "1,500 HP",
+                    acceleration: "0-100 km/h en 2.4s",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/1/18/Bugatti_Chiron_1.jpg",
+                    description: "El Chiron es el sucesor del Veyron y representa la nueva generación de hipercars de Bugatti. Con un motor W16 quad-turbo mejorado, chasis y suspensión completamente nuevos y tecnología de vanguardia, el Chiron establece nuevos estándares de rendimiento y lujo. La producción está limitada a 500 unidades, incluyendo todas las variantes especiales."
+                },
+                {
+                    id: 7,
+                    name: "Bugatti Veyron Super Sport",
+                    year: 2010,
+                    topSpeed: "431 km/h",
+                    horsepower: "1,200 HP",
+                    acceleration: "0-100 km/h en 2.5s",
+                    image: "https://cdn.rmsothebys.com/9/3/e/e/a/5/93eea5471dc50d92ef049669eff32d3af324389e.webp",
+                    description: "El Veyron Super Sport ostentó el récord del automóvil de producción más rápido del mundo entre 2010 y 2017. Con 200 HP adicionales sobre el Veyron estándar, aerodinámica mejorada y suspensión recalibrada, el Super Sport representa el pináculo de la primera generación de hipercars modernos de Bugatti. Solo se fabricaron 30 unidades."
+                },
+                {
+                    id: 8,
+                    name: "Bugatti Veyron Grand Sport Vitesse",
+                    year: 2012,
+                    topSpeed: "408.8 km/h",
+                    horsepower: "1,200 HP",
+                    acceleration: "0-100 km/h en 2.6s",
+                    image: "https://m.media-amazon.com/images/I/61gd0FBNNpL._AC_UF894,1000_QL80_.jpg",
+                    description: "El Grand Sport Vitesse es la versión descapotable del Veyron Super Sport, combinando la experiencia de conducción a cielo abierto con un rendimiento extremo. Ostentó el récord del descapotable más rápido del mundo con una velocidad máxima de 408.8 km/h. Se produjeron solo 92 unidades, incluyendo numerosas ediciones especiales."
+                },
+                {
+                    id: 9,
+                    name: "Bugatti Veyron",
+                    year: 2005,
+                    topSpeed: "407 km/h",
+                    horsepower: "1,001 HP",
+                    acceleration: "0-100 km/h en 2.5s",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Bugatti_Veyron_16.4_–_Frontansicht_%281%29%2C_5._April_2012%2C_Düsseldorf.jpg",
+                    description: "El Bugatti Veyron 16.4 revolucionó la industria automovilística al convertirse en el primer automóvil de producción en superar los 1,000 HP y alcanzar más de 400 km/h. Con un motor W16 quad-turbo de 8.0 litros, el Veyron representó un hito ingenieril y estableció a Bugatti como el fabricante de los autos más rápidos del mundo."
+                },
+                {
+                    id: 10,
+                    name: "Bugatti La Voiture Noire",
+                    year: 2019,
+                    topSpeed: "420 km/h (estimada)",
+                    horsepower: "1,500 HP",
+                    acceleration: "0-100 km/h en 2.4s",
+                    image: "https://content.media.ccdn.es/api/v1/cnet-media/images/d9/d9c9f2d6-0925-4383-92fe-76084c788b1e?rule=original",
+                    description: "La Voiture Noire ('El Coche Negro' en francés) es una pieza única creada como tributo al legendario Bugatti Type 57 SC Atlantic de Jean Bugatti. Con un precio de 11 millones de euros antes de impuestos, es considerado el automóvil nuevo más caro del mundo. Basado en el Chiron, presenta una carrocería completamente personalizada y detalles únicos."
+                }
+            ]
+        };
+
+        // Function to generate car cards
+        function generateCarCards(brand) {
+            const container = $(`#${brand}Cars`);
+            container.empty();
+            
+            // Simulate loading time
+            setTimeout(() => {
+                const cars = carData[brand];
+                
+                cars.forEach(car => {
+                    const brandColorClass = brand === 'koenigsegg' ? 'koenigsegg-color' : 
+                                          brand === 'mclaren' ? 'mclaren-color' : 
+                                          brand === 'ferrari' ? 'ferrari-color' : 'bugatti-color';
+                    
+                    const cardHtml = `
+                        <div class="col-lg-6 mb-4">
+                            <div class="car-card">
+                                <div class="car-image">
+                                    <div class="car-rank">${car.id}</div>
+                                    <img src="${car.image}" alt="${car.name}">
+                                </div>
+                                <div class="car-details">
+                                    <h3 class="${brandColorClass}">${car.name}</h3>
+                                    <div class="car-specs">
+                                        <div class="car-spec">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            <span>${car.year}</span>
+                                        </div>
+                                        <div class="car-spec">
+                                            <i class="fas fa-tachometer-alt"></i>
+                                            <span>${car.topSpeed}</span>
+                                        </div>
+                                        <div class="car-spec">
+                                            <i class="fas fa-bolt"></i>
+                                            <span>${car.horsepower}</span>
+                                        </div>
+                                        <div class="car-spec">
+                                            <i class="fas fa-stopwatch"></i>
+                                            <span>${car.acceleration}</span>
+                                        </div>
+                                    </div>
+                                    <p class="car-description">${car.description}</p>
+                                    <a href="#" class="more-info-btn">Ver más detalles</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    container.append(cardHtml);
+                });
+            }, 1000);
+        }
+
+        // Load initial data
+        $(document).ready(function() {
+            // Hide loader after 2 seconds
+            setTimeout(function() {
+                $("#loader").fadeOut();
+            }, 2000);
+            
+            // Load Koenigsegg cars initially
+            generateCarCards('koenigsegg');
+            
+            // Load other brand cars when tab is clicked
+            $('#brandTabs button').on('shown.bs.tab', function (e) {
+                const brand = $(e.target).attr('id').split('-')[0];
+                generateCarCards(brand);
+            });
+            
+            // Handle more info button clicks
+            $(document).on('click', '.more-info-btn', function(e) {
+                e.preventDefault();
+                alert('Esta es una versión prototipo, Actualmente se esta trabajando en la vercion difinitiva.');
+            });
+        });
+    </script>
+</body>
+</html>
